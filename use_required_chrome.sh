@@ -18,5 +18,10 @@ use_chrome_stable_version() {
 
 CURRENT_CHROME_VERSION="`google-chrome --version | sed 's/Google Chrome //'`"
 
+if [ -z "$REQUIRED_CHROME_VERSION" ]; then
+  echo "REQUIRED_CHROME_VERSION not set"
+  exit;
+fi
+
 # If current installed chrome is too low, then install latest stable
 verlte $CURRENT_CHROME_VERSION $REQUIRED_CHROME_VERSION && use_chrome_stable_version
