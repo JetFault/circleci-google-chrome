@@ -1,11 +1,10 @@
 # Circleci Use Chrome Stable Version
 
-To force the use of the latest stable version of Chrome on Circle CI, define those lines in your circle.yml configuration file and set enviromental variable $USE_LATEST_CHROME=true
+To force the use of the latest stable version of Chrome on Circle CI, define those lines in your circle.yml configuration file and set enviromental variable REQUIRED_CHROME_VERSION to the version of chrome you want at least
 
 ```
 dependencies:
   cache_directories:
   - '~/downloads'
 pre:
-  # download the latest Google Chrome if enabled by enviromental variable $USE_LATEST_CHROME
-  - if [[ $USE_LATEST_CHROME == true ]]; then if test -f "$HOME/downloads/use_chrome_stable_version.sh"; then sh $HOME/downloads/use_chrome_stable_version.sh; else curl -o $HOME/downloads/use_chrome_stable_version.sh --create-dirs https://raw.githubusercontent.com/azachar/circleci-google-chrome/master/use_chrome_stable_version.sh && bash $HOME/downloads/use_chrome_stable_version.sh; fi; fi;
+  - if test -f "$HOME/downloads/use_required_chrome.sh"; then bash $HOME/downloads/use_required_chrome.sh; else curl -o $HOME/downloads/use_required_chrome.sh --create-dirs https://raw.githubusercontent.com/jetfault/circleci-google-chrome/master/use_required_chrome.sh && bash $HOME/downloads/use_required_chrome.sh; fi;
