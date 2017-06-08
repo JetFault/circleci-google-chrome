@@ -1,7 +1,10 @@
 # Circleci Use Chrome Stable Version
 
-To force the use of the latest stable version of Chrome on Circle CI, define those lines in your circle.yml configuration file and set enviromental variable REQUIRED_CHROME_VERSION to the version of chrome you want at least
+Checks `REQUIRED_CHROME_VERSION` environment variable to see if it needs to update Chrome
 
+Note: This will install the latest stable version of chrome.
+
+Add this to your CircleCI file
 ```
 dependencies:
   cache_directories:
